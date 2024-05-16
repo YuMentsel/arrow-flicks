@@ -53,6 +53,10 @@ const customTheme = createTheme({
     lg: '1.5rem',
     xl: '2rem',
   },
+
+  spacing: {
+    xl: 'calc(1.5rem * var(--mantine-scale))',
+  },
 });
 
 export const theme = mergeMantineTheme(DEFAULT_THEME, customTheme);
