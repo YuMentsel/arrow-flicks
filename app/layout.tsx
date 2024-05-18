@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '600', '700'],
+  variable: '--inter',
 });
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

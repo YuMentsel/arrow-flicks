@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { NavLink, rem, useMantineTheme } from '@mantine/core';
+import { NavLink, useMantineTheme } from '@mantine/core';
 
 interface NavBarProps {
   data: NavLinkData;
@@ -20,7 +20,7 @@ export default function NavigationLink({ data: { href, label }, close }: Readonl
       href={href}
       label={label}
       onClick={close}
-      p={rem(9)}
+      p="0.53rem 0.62rem"
       style={{ borderRadius: theme.radius.md }}
       c={isActive ? theme.colors.purple[5] : theme.black}
       bg={isActive ? theme.colors.purple[1] : ''}
