@@ -10,3 +10,8 @@ export enum SearchParams {
   MinVote = 'minVote',
   MaxVote = 'maxVote',
 }
+
+export enum ErrorMessages {
+  RatingMin = `Should be ≤ "To"`,
+  RatingMax = `Should be ≥ "From"`,
+}

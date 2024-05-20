@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Select, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -17,10 +17,13 @@ export default function YearFilter({ years }: Readonly<YearFilterProps>) {
   const searchParams = useSearchParams();
   const { push } = useRouter();
 
-  const setYearParam = (value: string | null) => {
-    const queryString = createQueryString(searchParams, value, SearchParams.Year);
-    push(`${Paths.Movies}?${queryString}`);
-  };
+  const setYearParam = useCallback(
+    (value: string | null) => {
+      const queryString = createQueryString(searchParams, value, SearchParams.Year);
+      push(`${Paths.Movies}?${queryString}`);
+    },
+    [searchParams, push],
+  );
 
   const defaultValue = useMemo(() => searchParams.get(SearchParams.Year), [searchParams]);
 
