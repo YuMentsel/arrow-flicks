@@ -47,7 +47,7 @@ export default function RatingsFilter() {
   };
 
   return (
-    <Group align="start" grow display="inline-flex">
+    <Group align="start" maw="17.75rem" display="inline-flex" gap="0.5rem" wrap="nowrap">
       <NumberInput
         label="Ratings"
         placeholder="From"
@@ -60,7 +60,6 @@ export default function RatingsFilter() {
         clampBehavior="strict"
         allowDecimal={false}
         allowNegative={false}
-        maw="8.62rem"
         error={errorMin}
         onChange={(value) => {
           setMinVote(value.toString());
@@ -83,7 +82,6 @@ export default function RatingsFilter() {
         clampBehavior="strict"
         allowDecimal={false}
         allowNegative={false}
-        maw="8.62rem"
         error={errorMax}
         onChange={(value) => {
           setMaxVote(value.toString());

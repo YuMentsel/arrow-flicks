@@ -1,6 +1,7 @@
 'use client';
 
 import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Container, Title } from '@mantine/core';
 import Spinner from '@/app/components/Spinner';
 import Filters from './components/Filters';
@@ -58,11 +59,13 @@ export default function Movies() {
   ];
 
   const years = ['1990', '1991', '1992', '1993', '1994', '1995'];
+  const searchParams = useSearchParams();
+  const suspenseKey = new URLSearchParams(searchParams);
 
   return (
-    <Container size="64.3rem" my="1.25rem" px="xl">
+    <Container size="65rem" ml="3.6rem" mx={'auto'} py="1.7rem">
       <Title order={1}>Movies</Title>
-      <Suspense fallback={<Spinner />}>
+      <Suspense key={suspenseKey.toString()} fallback={<Spinner />}>
         <Filters genres={genres} years={years} />
       </Suspense>
     </Container>
