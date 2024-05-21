@@ -8,10 +8,11 @@ import {
   getGenresNamesByIds,
   getGenresNames,
 } from '@/app/lib/utils/transformGenresData';
-import { useMoviesData } from '@/app/lib/hooks/useMoviesData';
+import { useGenres } from '@/app/lib/hooks/useMoviesDataHooks';
 import { Paths, SearchParams } from '@/app/types/enums';
 import SelectIcon from '@/public/icons/down.svg';
 import classes from './styles.module.css';
+import Spinner from '@/app/components/Spinner';
 
 export default function GenresFilter() {
   const theme = useMantineTheme();
@@ -19,7 +20,7 @@ export default function GenresFilter() {
   const searchParams = useSearchParams();
   const { push } = useRouter();
 
-  const { data } = useMoviesData(searchParams.toString());
+  const { data, isLoading } = useGenres();
 
   const setGenresParams = useCallback(
     (value: string[], genres: Genre[]) => {
@@ -35,7 +36,9 @@ export default function GenresFilter() {
     return ids ? getGenresNamesByIds(ids, genres) : [];
   };
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     data && (
       <MultiSelect
         label="Genres"

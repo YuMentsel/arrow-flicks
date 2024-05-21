@@ -22,3 +22,8 @@ export enum Endpoints {
   Genres = '/genre',
   Movie = '/movie/:movieId',
 }
+
+export enum VotesCount {
+  million = 1000000,
+  thousand = 1000,
+}

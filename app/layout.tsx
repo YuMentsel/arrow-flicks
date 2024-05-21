@@ -4,6 +4,7 @@ import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme } from '../theme';
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'ArrowFlicks',

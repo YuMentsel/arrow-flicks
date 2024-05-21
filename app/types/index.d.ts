@@ -25,6 +25,10 @@ interface Movie {
   vote_count: number;
 }
 
+interface GenreResponse {
+  genres: Genre[];
+}
+
 interface MovieResponse {
   page: number;
   results: Movie[];
@@ -36,4 +40,3 @@ interface MainPageResponse {
   moviesData: MovieResponse;
   genres: Genre[];
 }
-

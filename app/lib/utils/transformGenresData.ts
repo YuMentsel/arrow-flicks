@@ -11,3 +11,9 @@ export const getGenresIdsByNames = (names: string[], genres: Genre[]): number[] 
     .map((genre) => genre!.id);
 
 export const getGenresNames = (genres: Genre[]): string[] => genres.map(({ name }) => name);
+
+export const transformGenres = (genres: Genre[], genreIds: number[]): string =>
+  genres
+    ?.filter(({ id }) => genreIds.includes(id))
+    .map(({ name }) => name)
+    .join(', ');
