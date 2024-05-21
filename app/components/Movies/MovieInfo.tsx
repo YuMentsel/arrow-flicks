@@ -1,21 +1,25 @@
 'use client';
 
-import { memo } from 'react';
+import { memo, ReactNode } from 'react';
 import { Text, Stack, useMantineTheme, Title, Flex, Rating } from '@mantine/core';
 import { transformVotesCount } from '@/app/lib/utils/transformMoviesData';
 
 interface MovieInfoProps {
   movie: Movie;
+  children: ReactNode;
 }
 
-const MovieInfo = memo(({ movie }: MovieInfoProps) => {
+const MovieInfo = memo(({ movie, children }: MovieInfoProps) => {
   const theme = useMantineTheme();
 
   return (
     <Stack gap="0.5rem">
-      <Title order={2} size="sm" lh={1.2} c={theme.colors.purple[5]}>
-        {movie.title ?? '...'}
-      </Title>
+      <Flex justify="space-between" wrap="nowrap" gap="0.5rem">
+        <Title order={2} size="sm" lh={1.2} c={theme.colors.purple[5]}>
+          {movie.title ?? '...'}
+        </Title>
+        {children}
+      </Flex>
 
       <Text size="sm" c={theme.colors.grey[6]}>
         {new Date(movie.release_date).getFullYear() ?? 'unknown'}

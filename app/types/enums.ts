@@ -17,6 +17,12 @@ export enum ErrorMessages {
   RatingMax = `Should be ≥ "From"`,
 }
 
+export enum UIMessages {
+  NoMovies = `We don’t have such movies, look for another one`,
+  NoRatedMovies = `You haven't rated any films yet`,
+  NoPage = `We can’t find the page you are looking for`,
+}
+
 export enum Endpoints {
   MoviesData = '/movies_data',
   Genres = '/genre',
