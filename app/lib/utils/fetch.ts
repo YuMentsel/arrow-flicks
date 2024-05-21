@@ -3,7 +3,7 @@ import { Endpoints } from '../../types/enums';
 export const fetcher = async (url: string | URL | Request) => {
   const response = await fetch(url, {
     cache: 'force-cache',
-    next: { revalidate: 600 },
+    next: { revalidate: 1800 },
   });
 
   if (!response.ok) {
