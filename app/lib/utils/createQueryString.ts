@@ -1,5 +1,5 @@
 import { ReadonlyURLSearchParams } from 'next/navigation';
-import { SearchParams } from '../types/enums';
+import { SearchParams } from '../../types/enums';
 
 export function createQueryString(
   searchParams: ReadonlyURLSearchParams,

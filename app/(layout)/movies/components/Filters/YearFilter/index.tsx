@@ -2,16 +2,13 @@ import { useCallback, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Select, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { createQueryString } from '@/app/lib/createQueryString';
+import { createQueryString } from '@/app/lib/utils/createQueryString';
 import { Paths, SearchParams } from '@/app/types/enums';
 import SelectIcon from '@/public/icons/down.svg';
 import classes from './styles.module.css';
+import { generateYearsArr } from '@/app/lib/utils/generateYearsArr';
 
-interface YearFilterProps {
-  years: string[];
-}
-
-export default function YearFilter({ years }: Readonly<YearFilterProps>) {
+export default function YearFilter() {
   const theme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure();
   const searchParams = useSearchParams();
@@ -31,13 +28,12 @@ export default function YearFilter({ years }: Readonly<YearFilterProps>) {
     <Select
       label="Release year"
       placeholder="Select release year"
-      data={years}
+      data={generateYearsArr(1895, new Date().getFullYear() + 10)}
       onChange={setYearParam}
       onDropdownOpen={open}
       onDropdownClose={close}
       defaultValue={defaultValue}
       classNames={classes}
-      maw="17.75rem"
       withCheckIcon={false}
       maxDropdownHeight="13.45rem"
       rightSection={<SelectIcon stroke={opened ? theme.colors.purple[5] : theme.colors.gray[4]} />}

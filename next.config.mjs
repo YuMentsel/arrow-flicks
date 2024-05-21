@@ -20,6 +20,26 @@ const nextConfig = {
       },
     ];
   },
+
+  async rewrites() {
+    const apiBaseUrl = process.env.API_BASE_URL;
+    const apiKey = process.env.API_KEY;
+
+    return [
+      {
+        source: '/movies_data',
+        destination: `${apiBaseUrl}/discover/movie?api_key=${apiKey}&language=en-US`,
+      },
+      {
+        source: '/genre',
+        destination: `${apiBaseUrl}/genre/movie/list?api_key=${apiKey}`,
+      },
+      {
+        source: '/movie/:movieId',
+        destination: `${apiBaseUrl}/movie/:movieId?api_key=${apiKey}&append_to_response=videos`,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

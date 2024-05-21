@@ -1,7 +1,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { Group, NumberInput } from '@mantine/core';
-import { createQueryString } from '@/app/lib/createQueryString';
+import { createQueryString } from '@/app/lib/utils/createQueryString';
 import { ErrorMessages, Paths, SearchParams } from '@/app/types/enums';
 import classes from './styles.module.css';
 
@@ -47,7 +47,7 @@ export default function RatingsFilter() {
   };
 
   return (
-    <Group align="start" maw="17.75rem" display="inline-flex" gap="0.5rem" wrap="nowrap">
+    <Group display="inline-flex" align="flex-start" gap="0.5rem" wrap="nowrap">
       <NumberInput
         label="Ratings"
         placeholder="From"
