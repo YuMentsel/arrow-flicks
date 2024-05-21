@@ -1,6 +1,5 @@
 import { MouseEventHandler } from 'react';
 import { ActionIcon, Text, useMantineTheme } from '@mantine/core';
-
 import Star from '@/../../public/icons/star.svg';
 
 interface RatingProps {

@@ -20,7 +20,7 @@ const customTheme = createTheme({
       '#4d1b95',
     ],
 
-    grey: [
+    gray: [
       '#f5f5f6',
       '#eaebed',
       '#d5d6dc',

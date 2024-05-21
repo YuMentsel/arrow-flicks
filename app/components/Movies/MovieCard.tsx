@@ -45,7 +45,7 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
             <RatingButton onClick={rateMovie} rating={vote} />
           </MovieInfo>
           <Group align="flex-start" wrap="nowrap" gap="xs">
-            <Text lh={1.2} size="sm" c={theme.colors.grey[6]}>
+            <Text lh={1.2} size="sm" c={theme.colors.gray[6]}>
               Genres
             </Text>
 
