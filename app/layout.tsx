@@ -4,6 +4,7 @@ import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme } from '../theme';
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'ArrowFlicks',
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--inter',
 });
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

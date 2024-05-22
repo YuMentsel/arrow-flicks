@@ -25,7 +25,6 @@ export default function AppLayout({
         breakpoint: 'sm',
         collapsed: { mobile: !opened },
       }}
-      padding={{ base: 'md', lg: 'xl' }}
       transitionDuration={500}
       transitionTimingFunction="ease"
       withBorder={false}
