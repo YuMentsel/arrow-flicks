@@ -1,0 +1,60 @@
+.root {
+  max-width: 17.75rem;
+  flex-grow: 1;
+}
+
+.label {
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 700;
+}
+
+.option {
+  height: 2.25rem;
+  margin-right: 0.1rem;
+  padding-left: 0.5rem;
+  font-size: var(--mantine-font-size-xs);
+  transition: 0.3s;
+
+  &:hover {
+    background-color: var(--mantine-color-purple-0);
+  }
+
+  &[aria-selected='true'] {
+    background-color: var(--mantine-color-purple-5);
+    color: var(--mantine-color-white);
+  }
+}
+
+.dropdown {
+  border: none;
+}
+
+.input {
+  height: 2.62rem;
+  margin-top: 0.25rem;
+  border: 1px solid var(--mantine-color-gray-2);
+  font-family: var(--inter);
+  font-size: var(--mantine-font-size-xs);
+
+  &::placeholder {
+    color: var(--mantine-color-gray-4);
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid var(--mantine-color-purple-5);
+  }
+
+  &[data-expanded='true'] {
+    border: 1px solid var(--mantine-color-purple-5);
+  }
+}
+
+.input + .section svg {
+  margin-right: 0.625rem;
+  transition: 0.3s;
+}
+
+.input[data-expanded='true'] + .section svg {
+  transform: rotate(180deg);
+}

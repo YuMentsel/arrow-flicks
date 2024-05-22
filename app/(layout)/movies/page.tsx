@@ -3,12 +3,13 @@
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { SWRConfig } from 'swr';
-import { Container, Title } from '@mantine/core';
+import { Container, Stack, Title } from '@mantine/core';
 import Filters from './components/Filters';
 import MovieList from '@/app/components/Movies';
 import Spinner from '@/app/components/Spinner';
-import { useGenres, useMovies } from '@/app/lib/hooks/useMoviesDataHooks';
 import ErrorBoundary from '../../components/ErrorBoundary';
+import SortBy from './components/Sorting';
+import { useGenres, useMovies } from '@/app/lib/hooks/useMoviesDataHooks';
 
 export default function Movies() {
   const searchParams = useSearchParams();
@@ -36,10 +37,13 @@ export default function Movies() {
           <ErrorBoundary errorMessage={error} />
         ) : (
           <>
-            <Title order={1} mt={{ base: 'sm', md: 'md', lg: '1.22rem' }} mb="2.3rem">
+            <Title order={1} mt={{ base: 'sm', md: 'md', lg: '1.2rem' }} mb="2.4rem">
               Movies
             </Title>
-            <Filters />
+            <Stack gap="1.25rem">
+              <Filters />
+              <SortBy />
+            </Stack>
             {isLoading || isGenresLoading ? (
               <Spinner />
             ) : (

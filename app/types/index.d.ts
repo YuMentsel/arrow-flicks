@@ -3,6 +3,10 @@ interface NavLinkData {
   label: string;
 }
 
+interface SortByOptions {
+  [key: string]: string;
+}
+
 interface Genre {
   id: number;
   name: string;
