@@ -17,3 +17,5 @@ export const SORT_OPTIONS: SortByOptions = {
   'original_title.asc': 'Title (A-Z)',
   'original_title.desc': 'Title (Z-A)',
 };
+
+export const LS_RATED_MOVIES_KEY = 'ratedMovies';

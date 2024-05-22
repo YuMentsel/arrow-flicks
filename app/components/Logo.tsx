@@ -15,7 +15,14 @@ const poppins = Poppins({
 export default function Logo() {
   const theme = useMantineTheme();
   return (
-    <Flex href={Paths.Movies} component={Link} h="2.25rem" align="center" gap="0.75rem" td="none">
+    <Flex
+      href={`/${Paths.Movies}`}
+      component={Link}
+      h="2.25rem"
+      align="center"
+      gap="0.75rem"
+      td="none"
+    >
       <LogoSvg />
       <Text className={poppins.className} lts="-0.03rem" size="lg" c={theme.colors.purple[5]}>
         ArrowFlicks

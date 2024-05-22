@@ -8,6 +8,10 @@ body {
     width: 0.3rem;
   }
 
+  &:has(.mantine-Modal-overlay) {
+    margin-right: 0 !important;
+  }
+
   &::-webkit-scrollbar-track {
     background-color: transparent;
   }

@@ -57,7 +57,6 @@ const customTheme = createTheme({
   },
 
   spacing: {
-    lg: 'calc(0.75rem * var(--mantine-scale))',
     xl: 'calc(1.5rem * var(--mantine-scale))',
   },
 });

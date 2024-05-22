@@ -17,7 +17,7 @@ const MovieInfo = memo(({ movie, children }: MovieInfoProps) => {
     <Stack gap="0.3rem">
       <Flex justify="space-between" wrap="nowrap" gap="0.5rem">
         <Title order={2} size="sm" lh={1.2} c={theme.colors.purple[5]}>
-          {movie.title || '...'}
+          {movie.original_title || '...'}
         </Title>
         {children}
       </Flex>

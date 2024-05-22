@@ -11,8 +11,8 @@ import {
 import { useGenres } from '@/app/lib/hooks/useMoviesDataHooks';
 import { Paths, SearchParams } from '@/app/types/enums';
 import SelectIcon from '@/public/icons/down.svg';
-import classes from './styles.module.css';
 import Spinner from '@/app/components/Spinner';
+import classes from './styles.module.css';
 
 export default function GenresFilter() {
   const theme = useMantineTheme();
