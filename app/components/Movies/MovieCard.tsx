@@ -25,12 +25,12 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
   }, []);
 
   return (
-    <Card w="100%" radius="lg" p="xl" component={Link} href={`/movies/${movie.id ?? ''}`}>
+    <Card w="100%" radius="lg" p="xl" component={Link} href={`/movies/${movie.id || ''}`}>
       <Flex gap="1rem">
         <Box pos="relative" h="10.62rem" miw="7.44rem">
           <Image
-            src={`${process.env.NEXT_PUBLIC_IMG_URL}/w185${movie.poster_path ?? ''}`}
-            alt={`Poster of ${movie.title ?? 'movie'}`}
+            src={movie.poster_path && `${process.env.NEXT_PUBLIC_IMG_URL}/w185${movie.poster_path}`}
+            alt={`Poster of ${movie.title || 'movie'}`}
             component={NextImage}
             fallbackSrc={poster.src}
             sizes="100%"
@@ -50,7 +50,7 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
             </Text>
 
             <Text lh={1.2} size="sm" lineClamp={2}>
-              {transformGenres(genres, movie.genre_ids ?? [])}
+              {transformGenres(genres, movie.genre_ids || [])}
             </Text>
           </Group>
         </Stack>

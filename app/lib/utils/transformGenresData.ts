@@ -16,4 +16,4 @@ export const transformGenres = (genres: Genre[], genreIds: number[]): string =>
   genres
     ?.filter(({ id }) => genreIds.includes(id))
     .map(({ name }) => name)
-    .join(', ');
+    .join(', ') || '-';
