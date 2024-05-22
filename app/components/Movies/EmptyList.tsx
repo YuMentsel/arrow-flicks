@@ -5,9 +5,9 @@ import noMovies from '@/../../public/no-movies.png';
 
 export function EmptyList() {
   return (
-    <Stack align="center" gap="1rem">
+    <Stack p="xl" align="center" gap="sm">
       <Image src={noMovies} alt="No such movies" />
-      <Text ta="center" fw={600} fz={20}>
+      <Text ta="center" fw={600} fz="ld">
         {UIMessages.NoMovies}
       </Text>
     </Stack>

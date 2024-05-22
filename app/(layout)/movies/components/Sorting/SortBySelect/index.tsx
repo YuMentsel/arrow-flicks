@@ -4,7 +4,7 @@ import { Select, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Paths, SearchParams } from '@/app/types/enums';
 import { getKeyByValue } from '@/app/lib/utils/getKeyByValue';
-import { SORT_OPTIONS } from '@/app/constants';
+import { DEFAULT_SORT_VALUE, SORT_OPTIONS } from '@/app/constants';
 import { createQueryString } from '@/app/lib/utils/createQueryString';
 import SelectIcon from '@/public/icons/down.svg';
 import classes from './styles.module.css';
@@ -26,7 +26,7 @@ export default function SortBySelect() {
 
   const defaultValue = useMemo(() => {
     const paramKey = searchParams.get(SearchParams.SortBy);
-    return paramKey ? SORT_OPTIONS[paramKey] : null;
+    return paramKey ? SORT_OPTIONS[paramKey] : DEFAULT_SORT_VALUE;
   }, [searchParams]);
 
   return (

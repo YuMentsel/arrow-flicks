@@ -19,3 +19,5 @@ export const SORT_OPTIONS: SortByOptions = {
 };
 
 export const LS_RATED_MOVIES_KEY = 'ratedMovies';
+
+export const DEFAULT_SORT_VALUE = 'Most Popular';

@@ -18,20 +18,20 @@ export default function Movies() {
   const [error, setError] = useState('');
 
   return (
-    <Container
-      style={{ position: 'relative' }}
-      mih="100vh"
-      size="65rem"
-      mx={'auto'}
-      px={{ base: 'sm', xs: 'xl', sm: '1.85rem' }}
-      py={{ base: 'xs', sm: 'xl' }}
+    <SWRConfig
+      value={{
+        onError: (error) => {
+          setError(`Error! ${error.message}`);
+        },
+      }}
     >
-      <SWRConfig
-        value={{
-          onError: (error) => {
-            setError(`Error! ${error.message}`);
-          },
-        }}
+      <Container
+        style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}
+        mih="100vh"
+        size="65rem"
+        mx={'auto'}
+        px={{ base: 'sm', xs: 'xl', sm: '1.85rem' }}
+        py={{ base: 'xs', sm: 'xl' }}
       >
         {error ? (
           <ErrorBoundary errorMessage={error} />
@@ -40,7 +40,7 @@ export default function Movies() {
             <Title order={1} mt={{ base: 'sm', md: 'md', lg: '1.2rem' }} mb="2.4rem">
               Movies
             </Title>
-            <Stack gap="1.25rem">
+            <Stack gap="lg">
               <Filters />
               <SortBy />
             </Stack>
@@ -51,7 +51,7 @@ export default function Movies() {
             )}
           </>
         )}
-      </SWRConfig>
-    </Container>
+      </Container>
+    </SWRConfig>
   );
 }

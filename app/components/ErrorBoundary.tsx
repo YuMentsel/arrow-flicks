@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Box, Center, Flex, Stack, Text } from '@mantine/core';
+import { Stack, Text } from '@mantine/core';
 import noMovies from '@/../../public/no-movies.png';
 
 export default function ErrorBoundary({
@@ -10,9 +10,9 @@ export default function ErrorBoundary({
   errorMessage: string;
 }>) {
   return (
-    <Stack className="center" align="center" gap="1rem">
+    <Stack className="center" p="xl" align="center" gap="sm">
       <Image src={noMovies} alt="No found data" priority />
-      <Text ta="center" fw={600} fz={20}>
+      <Text ta="center" fw={600} fz="ld">
         {errorMessage}
       </Text>
     </Stack>

@@ -4,7 +4,6 @@ import { IconX } from '@tabler/icons-react';
 import { useLocalStorage } from '@mantine/hooks';
 import classes from './styles.module.css';
 import { LS_RATED_MOVIES_KEY } from '@/app/constants';
-import { M_PLUS_1 } from 'next/font/google';
 
 interface RatedMovie {
   [key: string]: number;
