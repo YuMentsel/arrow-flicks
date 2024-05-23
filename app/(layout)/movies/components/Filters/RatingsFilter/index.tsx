@@ -1,8 +1,8 @@
-import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Group, NumberInput } from '@mantine/core';
 import { createQueryString } from '@/app/lib/utils/createQueryString';
-import { ErrorMessages, Paths, SearchParams } from '@/app/types/enums';
+import { ErrorMessage, Paths, SearchParams } from '@/app/types/enums';
 import classes from './styles.module.css';
 
 export default function RatingsFilter() {
@@ -23,7 +23,7 @@ export default function RatingsFilter() {
 
   const validateMin = (value: string) => {
     if (value !== '' && maxVote !== '' && value > maxVote) {
-      setErrorMin(ErrorMessages.RatingMin);
+      setErrorMin(ErrorMessage.RatingMin);
     } else {
       setErrorMin(null);
     }
@@ -32,7 +32,7 @@ export default function RatingsFilter() {
 
   const validateMax = (value: string) => {
     if (value !== '' && minVote !== '' && value < minVote) {
-      setErrorMax(ErrorMessages.RatingMax);
+      setErrorMax(ErrorMessage.RatingMax);
     } else {
       setErrorMax(null);
     }

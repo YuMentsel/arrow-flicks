@@ -1,6 +1,7 @@
 html {
   width: 100vw;
   overflow-x: hidden;
+  background-color: var(--mantine-color-gray-0);
 }
 
 body {
@@ -27,4 +28,44 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.logo-not-found {
+  .mantine-Flex-root {
+    position: absolute;
+    margin: 1.5rem;
+  }
+}
+
+.m_77c9d27d.mantine-Button-root {
+  height: 2.5rem;
+  font-size: var(--mantine-font-size-xs);
+  font-weight: 600;
+  background-color: var(--mantine-color-purple-5);
+
+  &:hover {
+    background-color: var(--mantine-color-purple-3);
+  }
+
+  &:active {
+    background-color: var(--mantine-color-purple-8);
+  }
+
+  &[data-variant='transparent'] {
+    padding: 0;
+    font-weight: 500;
+    background-color: transparent;
+
+    &:hover {
+      color: var(--mantine-color-purple-3);
+    }
+
+    &:active {
+      color: var(--mantine-color-purple-8);
+    }
+
+    &:disabled {
+      color: var(--mantine-color-gray-6);
+    }
+  }
 }

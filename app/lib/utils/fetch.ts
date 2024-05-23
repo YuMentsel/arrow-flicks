@@ -1,4 +1,4 @@
-import { Endpoints } from '../../types/enums';
+import { Endpoints, ErrorMessage } from '../../types/enums';
 
 export const fetcher = async (url: string | URL | Request) => {
   const response = await fetch(url, {
@@ -7,7 +7,7 @@ export const fetcher = async (url: string | URL | Request) => {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch data :(');
+    throw new Error(ErrorMessage.Fetch);
   }
 
   const data = await response.json();

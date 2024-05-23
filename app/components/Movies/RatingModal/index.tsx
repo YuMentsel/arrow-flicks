@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Modal, Button, Text, Title, Rating, Divider, Stack, Group } from '@mantine/core';
 import { IconX } from '@tabler/icons-react';
 import { useLocalStorage } from '@mantine/hooks';
-import classes from './styles.module.css';
 import { LS_RATED_MOVIES_KEY } from '@/app/constants';
+import classes from './styles.module.css';
 
 interface RatedMovie {
   [key: string]: number;
@@ -44,7 +44,7 @@ export function RatingModal({
       setRatedMovie(newRatedMovies);
     }
     updateRating(null);
-    closeModal(false);
+    closeModal(true);
   };
 
   const closeModal = (isSaved?: boolean) => {
@@ -84,11 +84,8 @@ export function RatingModal({
           }}
         />
         <Group>
-          <Button className={classes.button} onClick={saveRating}>
-            Save
-          </Button>
+          <Button onClick={saveRating}>Save</Button>
           <Button
-            className={classes.buttonTransparent}
             variant="transparent"
             disabled={ratedMovies[id] === undefined}
             onClick={removeRating}

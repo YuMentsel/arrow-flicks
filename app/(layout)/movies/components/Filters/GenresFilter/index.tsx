@@ -11,7 +11,7 @@ import {
 import { useGenres } from '@/app/lib/hooks/useMoviesDataHooks';
 import { Paths, SearchParams } from '@/app/types/enums';
 import SelectIcon from '@/public/icons/down.svg';
-import Spinner from '@/app/components/Spinner';
+import LoaderDots from '@/app/components/LoaderDots';
 import classes from './styles.module.css';
 
 export default function GenresFilter() {
@@ -37,7 +37,7 @@ export default function GenresFilter() {
   };
 
   return isLoading ? (
-    <Spinner />
+    <LoaderDots />
   ) : (
     data && (
       <MultiSelect

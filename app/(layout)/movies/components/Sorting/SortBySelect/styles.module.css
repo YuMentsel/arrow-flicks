@@ -36,10 +36,6 @@
   font-family: var(--inter);
   font-size: var(--mantine-font-size-xs);
 
-  &::placeholder {
-    color: var(--mantine-color-gray-4);
-  }
-
   &:hover,
   &:focus {
     border: 1px solid var(--mantine-color-purple-5);

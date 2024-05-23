@@ -28,12 +28,15 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
     if (storedRatedMovies) {
       setRating(JSON.parse(storedRatedMovies)[movie.id] ?? null);
     }
-  }, []);
+  }, [movie.id]);
 
-  const openRatingModal = useCallback((event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    open();
-  }, []);
+  const openRatingModal = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      open();
+    },
+    [open],
+  );
 
   const updateRating = useCallback((rating: number | null) => {
     setRating(rating);

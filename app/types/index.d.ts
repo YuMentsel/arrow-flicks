@@ -25,8 +25,8 @@ interface Movie {
   release_date: Date;
   title: string;
   video: boolean;
-  vote_average: number;
-  vote_count: number;
+  vote_average?: number;
+  vote_count?: number;
 }
 
 interface GenreResponse {

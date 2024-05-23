@@ -3,8 +3,8 @@
 import { Poppins } from 'next/font/google';
 import Link from 'next/link';
 import { Flex, Text, useMantineTheme } from '@mantine/core';
-import LogoSvg from '@/public/logo.svg';
 import { Paths } from '../types/enums';
+import LogoSvg from '@/public/logo.svg';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -14,6 +14,7 @@ const poppins = Poppins({
 
 export default function Logo() {
   const theme = useMantineTheme();
+
   return (
     <Flex
       href={`/${Paths.Movies}`}

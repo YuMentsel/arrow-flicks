@@ -12,15 +12,28 @@ export enum SearchParams {
   SortBy = 'sort_by',
 }
 
-export enum ErrorMessages {
+export enum ErrorMessage {
   RatingMin = `Should be ≤ "To"`,
   RatingMax = `Should be ≥ "From"`,
+  Fetch = 'Failed to fetch data :(',
 }
 
-export enum UIMessages {
+export enum UIMessage {
   NoMovies = `We don’t have such movies, look for another one`,
   NoRatedMovies = `You haven't rated any films yet`,
   NoPage = `We can’t find the page you are looking for`,
+}
+
+export enum UIAlt {
+  NoMovies = 'No such movies',
+  NoRatedMovies = 'No rated movies',
+  NoPage = 'Not Found',
+  Error = 'No Data',
+}
+
+export enum ButtonMessage {
+  GoHome = 'Go Home',
+  FindMovies = 'Find movies',
 }
 
 export enum Endpoints {

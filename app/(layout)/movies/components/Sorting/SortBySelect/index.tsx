@@ -32,7 +32,6 @@ export default function SortBySelect() {
   return (
     <Select
       label="Sort by"
-      placeholder="Select sort type"
       data={Object.values(SORT_OPTIONS)}
       onChange={setSortParam}
       onDropdownOpen={open}

@@ -14,10 +14,6 @@
   &:focus {
     border: 1px solid var(--mantine-color-purple-5);
   }
-
-  &::placeholder {
-    color: var(--mantine-color-gray-4);
-  }
 }
 
 .controls {

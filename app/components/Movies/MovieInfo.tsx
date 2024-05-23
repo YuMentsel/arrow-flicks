@@ -28,10 +28,10 @@ const MovieInfo = memo(({ movie, children }: MovieInfoProps) => {
       <Flex align="center" columnGap="0.25rem">
         <Star color={movie.vote_average ? theme.colors.yellow[6] : theme.colors.gray[2]} />
         <Text size="sm" fw={600} lh="20px">
-          {movie.vote_average.toFixed(1) || '0.0'}
+          {movie.vote_average?.toFixed(1) || '0.0'}
         </Text>
         <Text size="sm" c={theme.colors.gray[6]} ml="0.25rem">
-          ({transformVotesCount(movie.vote_count) || 0})
+          ({movie.vote_count ? transformVotesCount(movie.vote_count) : 0})
         </Text>
       </Flex>
     </Stack>

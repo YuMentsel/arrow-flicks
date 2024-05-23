@@ -1,23 +1,18 @@
-import { memo } from 'react';
-import { SimpleGrid } from '@mantine/core';
-import MovieCard from './MovieCard';
-import { EmptyList } from './EmptyList';
+import { useSearchParams } from 'next/navigation';
+import MovieList from '@/app/components/Movies/MovieList';
+import LoaderDots from '@/app/components/LoaderDots';
+import { useGenres, useMovies } from '@/app/lib/hooks/useMoviesDataHooks';
 
-interface MovieListProps {
-  movies: Movie[];
-  genres: Genre[];
-}
+export default function Movies() {
+  const searchParams = useSearchParams();
+  const { data: moviesData, isLoading: isMoviesLoading } = useMovies(searchParams.toString());
+  const { data: genresData, isLoading: isGenresLoading } = useGenres();
 
-const MovieList = memo(({ movies, genres }: MovieListProps) => {
-  return movies.length ? (
-    <SimpleGrid maw={{ base: '35rem', lg: '100%' }} mx="auto" mt="xl" cols={{ base: 1, lg: 2 }}>
-      {movies?.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} genres={genres} />
-      ))}
-    </SimpleGrid>
-  ) : (
-    <EmptyList />
+  if (isMoviesLoading || isGenresLoading) {
+    return <LoaderDots />;
+  }
+
+  return (
+    moviesData && genresData && <MovieList movies={moviesData.results} genres={genresData.genres} />
   );
-});
-
-export default MovieList;
+}
