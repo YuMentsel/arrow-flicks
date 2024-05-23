@@ -3,7 +3,7 @@
 import { Poppins } from 'next/font/google';
 import Link from 'next/link';
 import { Flex, Text, useMantineTheme } from '@mantine/core';
-import { Paths } from '../types/enums';
+import { Path } from '../types/enums';
 import LogoSvg from '@/public/logo.svg';
 
 const poppins = Poppins({
@@ -17,7 +17,7 @@ export default function Logo() {
 
   return (
     <Flex
-      href={`/${Paths.Movies}`}
+      href={`/${Path.Movies}`}
       component={Link}
       h="2.25rem"
       align="center"

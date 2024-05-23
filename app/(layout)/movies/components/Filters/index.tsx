@@ -4,7 +4,7 @@ import { getQueryParams } from '@/app/lib/utils/getQueryParams';
 import GenresFilter from './GenresFilter';
 import YearFilter from './YearFilter';
 import RatingsFilter from './RatingsFilter';
-import { Paths } from '@/app/types/enums';
+import { Path } from '@/app/types/enums';
 
 export default function Filters() {
   const { push } = useRouter();
@@ -26,7 +26,7 @@ export default function Filters() {
           <Flex h="100%" mah="4.75rem" justify="center" align="flex-end">
             <Button
               variant="transparent"
-              onClick={() => push(`/${Paths.Movies}`)}
+              onClick={() => push(`/${Path.Movies}`)}
               size="xs"
               disabled={getQueryParams(searchParams).length === 0}
             >

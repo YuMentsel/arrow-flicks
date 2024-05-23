@@ -3,7 +3,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Select, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { createQueryString } from '@/app/lib/utils/createQueryString';
-import { Paths, SearchParams } from '@/app/types/enums';
+import { Path, SearchParam } from '@/app/types/enums';
 import SelectIcon from '@/public/icons/down.svg';
 import classes from './styles.module.css';
 import { generateYearsArr } from '@/app/lib/utils/generateYearsArr';
@@ -16,13 +16,13 @@ export default function YearFilter() {
 
   const setYearParam = useCallback(
     (value: string | null) => {
-      const queryString = createQueryString(searchParams, value, SearchParams.Year);
-      push(`${Paths.Movies}?${queryString}`);
+      const queryString = createQueryString(searchParams, value, SearchParam.Year);
+      push(`${Path.Movies}?${queryString}`);
     },
     [searchParams, push],
   );
 
-  const defaultValue = useMemo(() => searchParams.get(SearchParams.Year), [searchParams]);
+  const defaultValue = useMemo(() => searchParams.get(SearchParam.Year), [searchParams]);
 
   return (
     <Select

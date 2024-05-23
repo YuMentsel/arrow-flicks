@@ -9,7 +9,7 @@ import {
   getGenresNames,
 } from '@/app/lib/utils/transformGenresData';
 import { useGenres } from '@/app/lib/hooks/useMoviesDataHooks';
-import { Paths, SearchParams } from '@/app/types/enums';
+import { Path, SearchParam } from '@/app/types/enums';
 import SelectIcon from '@/public/icons/down.svg';
 import LoaderDots from '@/app/components/LoaderDots';
 import classes from './styles.module.css';
@@ -25,14 +25,14 @@ export default function GenresFilter() {
   const setGenresParams = useCallback(
     (value: string[], genres: Genre[]) => {
       const idsString = getGenresIdsByNames(value, genres).join(',');
-      const queryString = createQueryString(searchParams, idsString, SearchParams.Genres);
-      push(`${Paths.Movies}?${queryString}`);
+      const queryString = createQueryString(searchParams, idsString, SearchParam.Genres);
+      push(`${Path.Movies}?${queryString}`);
     },
     [searchParams, push],
   );
 
   const getDefaultValue = (genres: Genre[]) => {
-    const ids = searchParams.get(SearchParams.Genres)?.split(',');
+    const ids = searchParams.get(SearchParam.Genres)?.split(',');
     return ids ? getGenresNamesByIds(ids, genres) : [];
   };
 

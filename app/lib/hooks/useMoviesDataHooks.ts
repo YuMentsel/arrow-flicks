@@ -1,11 +1,11 @@
 import useSWR from 'swr';
 import { fetchMoviesData, fetcher } from '../utils/fetch';
-import { Endpoints } from '@/app/types/enums';
+import { Endpoint } from '@/app/types/enums';
 
 export const useMoviesData = (params: string) =>
-  useSWR<MainPageResponse>(`${Endpoints.MoviesData}?${params}`, fetchMoviesData);
+  useSWR<MainPageResponse>(`${Endpoint.MoviesData}?${params}`, fetchMoviesData);
 
 export const useMovies = (params: string) =>
-  useSWR<MovieResponse>(`${Endpoints.MoviesData}?${params}`, fetcher);
+  useSWR<MovieResponse>(`${Endpoint.MoviesData}?${params}`, fetcher);
 
-export const useGenres = () => useSWR<GenreResponse>(`${Endpoints.Genres}`, fetcher);
+export const useGenres = () => useSWR<GenreResponse>(`${Endpoint.Genres}`, fetcher);

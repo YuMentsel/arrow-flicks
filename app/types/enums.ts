@@ -1,15 +1,16 @@
-export enum Paths {
+export enum Path {
   Movies = 'movies',
   Rated = 'rated',
 }
 
-export enum SearchParams {
+export enum SearchParam {
   Page = 'page',
   Genres = 'with_genres',
   Year = 'primary_release_year',
   MinVote = 'vote_average.gte',
   MaxVote = 'vote_average.lte',
   SortBy = 'sort_by',
+  Search = 'search',
 }
 
 export enum ErrorMessage {
@@ -36,7 +37,7 @@ export enum ButtonMessage {
   FindMovies = 'Find movies',
 }
 
-export enum Endpoints {
+export enum Endpoint {
   MoviesData = '/movies_data',
   Genres = '/genre',
   Movie = '/movie/:movieId',

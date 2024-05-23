@@ -21,7 +21,12 @@ export default function ErrorBoundary({
       }}
     >
       <Container
-        style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}
+        style={{
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.3rem',
+        }}
         mih="100vh"
         size="65rem"
         mx={'auto'}

@@ -32,18 +32,6 @@
 .input {
   height: 2.62rem;
   margin-top: 0.25rem;
-  border: 1px solid var(--mantine-color-gray-2);
-  font-family: var(--inter);
-  font-size: var(--mantine-font-size-xs);
-
-  &:hover,
-  &:focus {
-    border: 1px solid var(--mantine-color-purple-5);
-  }
-
-  &[data-expanded='true'] {
-    border: 1px solid var(--mantine-color-purple-5);
-  }
 }
 
 .input + .section svg {
