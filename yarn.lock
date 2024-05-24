@@ -1882,6 +1882,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@netlify/plugin-nextjs@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "@netlify/plugin-nextjs@npm:5.3.1"
+  checksum: 10c0/5601dc459d936a076d79ec0871dc4f7fc68b34260bcb0288e446a2e4f23d49f17077a8b7808e1edf2c42bf3b27b8933f6d4ab70b7d4416d38fedb186d0957fe4
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:14.1.3":
   version: 14.1.3
   resolution: "@next/env@npm:14.1.3"
@@ -2562,6 +2569,7 @@ __metadata:
     "@mantine/core": "npm:7.8.1"
     "@mantine/form": "npm:^7.9.2"
     "@mantine/hooks": "npm:7.8.1"
+    "@netlify/plugin-nextjs": "npm:^5.3.1"
     "@svgr/webpack": "npm:^8.1.0"
     "@tabler/icons-react": "npm:^3.5.0"
     "@types/node": "npm:20.11.26"

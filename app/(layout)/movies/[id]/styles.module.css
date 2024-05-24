@@ -1,0 +1,13 @@
+.breadcrumb {
+  color: var(--mantine-color-purple-5);
+  font-size: var(--mantine-font-size-xs);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--mantine-color-purple-3);
+  }
+
+  &:active {
+    color: var(--mantine-color-purple-8);
+  }
+}
