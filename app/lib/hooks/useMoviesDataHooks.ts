@@ -8,7 +8,7 @@ export const useMoviesData = (params: string) =>
 export const useMovies = (params: string) =>
   useSWR<MovieResponse>(`${Endpoint.MoviesData}?${params}`, fetcher);
 
-export const useMovie = (id: number) => useSWR<MovieResponse>(`${Endpoint.Movie}:${id}`, fetcher);
+export const useMovie = (id: number) => useSWR(`${Endpoint.Movie}${id}`, fetcher);
 
 export const useRatedMovies = (moviesId: string[]) => {
   return useSWR(
