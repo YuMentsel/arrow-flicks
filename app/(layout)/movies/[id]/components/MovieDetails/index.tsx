@@ -1,28 +1,21 @@
-'use client';
-
-import { memo, useCallback, useState, MouseEvent, useContext } from 'react';
 import Link from 'next/link';
 import NextImage from 'next/image';
-import { useMantineTheme, Card, Flex, Box, Stack, Group, Image, Text } from '@mantine/core';
+import { Box, Card, Flex, Image, Stack, Table } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { transformGenres } from '@/app/lib/utils/transformGenresData';
-import MovieInfo from './MovieInfo';
-import { RatingButton } from './RatingButton';
-import { RatingModal } from './RatingModal';
+import { useCallback, useContext, MouseEvent, useState } from 'react';
+import { RatingButton } from '@/app/components/Movies/RatingButton';
+import { RatingModal } from '@/app/components/Movies/RatingModal';
 import { RatedContext } from '@/app/context';
-import poster from '@/../../public/no-poster-sm.png';
+import MovieInfo from '@/app/components/Movies/MovieInfo';
+import { transformDetailedData } from '@/app/lib/utils/transformDetailedData';
+import poster from '@/../../public/no-poster.png';
+import classes from './styles.module.css';
 
-interface MovieCardProps {
-  movie: Movie | MovieDetails;
-  genres: Genre[];
+interface MovieDetailsProps {
+  movie: MovieDetails;
 }
 
-export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
-  const theme = useMantineTheme();
-
-  const genresArr = 'genres' in movie ? movie.genres.map(({ name }) => name) : '';
-  const genresStr = 'genre_ids' in movie ? transformGenres(genres, movie.genre_ids) : '';
-
+export default function MovieDetails({ movie }: Readonly<MovieDetailsProps>) {
   const { ratedData } = useContext<RatedContextData>(RatedContext);
 
   const [rating, setRating] = useState<number | null>(+JSON.parse(ratedData)[movie.id] || null);
@@ -43,9 +36,9 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
 
   return (
     <>
-      <Card w="100%" radius="lg" p="xl" component={Link} href={`/movies/${movie.id}`}>
-        <Flex gap="1rem" mih="10.62rem" direction={{ base: 'column', xs: 'row' }}>
-          <Box pos="relative" h={{ base: '22rem', xs: '10.62rem' }} miw="7.44rem">
+      <Card w="100%" radius="lg" p="1.5rem" component={Link} href={`/movies/${movie.id}`}>
+        <Flex gap="1rem" mih="22rem" direction={{ base: 'column', xs: 'row' }}>
+          <Box pos="relative" h={{ base: '30rem', xs: '22rem' }} miw="15.6rem">
             <Image
               src={
                 movie.poster_path && `${process.env.NEXT_PUBLIC_IMG_URL}/w185${movie.poster_path}`
@@ -64,15 +57,14 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
             <MovieInfo movie={movie}>
               <RatingButton onClick={openRatingModal} rating={rating} />
             </MovieInfo>
-            <Group align="flex-start" wrap="nowrap" gap="xs">
-              <Text lh={1.2} size="sm" c={theme.colors.gray[6]}>
-                Genres
-              </Text>
-
-              <Text lh={1.2} size="sm" lineClamp={2}>
-                {genresArr ? genresArr.join(', ') : genresStr}
-              </Text>
-            </Group>
+            <Table
+              data={transformDetailedData(movie)}
+              classNames={classes}
+              withRowBorders={false}
+              horizontalSpacing={0}
+              verticalSpacing={6}
+              mb="-0.5rem"
+            />
           </Stack>
         </Flex>
       </Card>
@@ -85,6 +77,4 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
       />
     </>
   );
-});
-
-export default MovieCard;
+}

@@ -52,7 +52,7 @@ interface RatedMovie {
 interface MovieDetails {
   adult: boolean;
   backdrop_path: string;
-  genres: Genres[];
+  genres: Genre[];
   homepage: string;
   id: number;
   budget: number;
