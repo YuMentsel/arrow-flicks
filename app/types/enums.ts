@@ -40,7 +40,7 @@ export enum ButtonMessage {
 export enum Endpoint {
   MoviesData = '/movies_data',
   Genres = '/genre',
-  Movie = '/movie/:movieId',
+  Movie = '/movie/',
 }
 
 export enum VotesCount {

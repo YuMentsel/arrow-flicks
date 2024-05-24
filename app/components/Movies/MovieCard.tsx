@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useCallback, useState, MouseEvent, useEffect } from 'react';
+import { memo, useCallback, useState, MouseEvent, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import NextImage from 'next/image';
 import { useMantineTheme, Card, Flex, Box, Stack, Group, Image, Text } from '@mantine/core';
@@ -9,30 +9,29 @@ import { transformGenres } from '@/app/lib/utils/transformGenresData';
 import MovieInfo from './MovieInfo';
 import { RatingButton } from './RatingButton';
 import { RatingModal } from './RatingModal';
+import { RatedContext } from '@/app/(layout)/layout';
 import poster from '@/../../public/no-poster-sm.png';
-import { LS_RATED_MOVIES_KEY } from '@/app/constants';
 
 interface MovieCardProps {
-  movie: Movie;
+  movie: Movie | MovieDetails;
   genres: Genre[];
 }
 
 export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
   const theme = useMantineTheme();
 
-  const [rating, setRating] = useState<number | null>(null);
-  const [opened, { open, close }] = useDisclosure(false);
+  const genresArr = 'genres' in movie ? movie.genres.map(({ name }) => name) : [];
+  const genresStr = 'genre_ids' in movie ? transformGenres(genres, movie.genre_ids) : '';
 
-  useEffect(() => {
-    const storedRatedMovies = localStorage.getItem(LS_RATED_MOVIES_KEY);
-    if (storedRatedMovies) {
-      setRating(JSON.parse(storedRatedMovies)[movie.id] ?? null);
-    }
-  }, [movie.id]);
+  const { ratedData } = useContext<RatedContextData>(RatedContext);
+
+  const [rating, setRating] = useState<number | null>(+JSON.parse(ratedData)[movie.id] || null);
+  const [opened, { open, close }] = useDisclosure(false);
 
   const openRatingModal = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
+      event.stopPropagation();
       open();
     },
     [open],
@@ -45,8 +44,8 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
   return (
     <>
       <Card w="100%" radius="lg" p="xl" component={Link} href={`/movies/${movie.id}`}>
-        <Flex gap="1rem">
-          <Box pos="relative" h="10.62rem" miw="7.44rem">
+        <Flex gap="1rem" direction={{ base: 'column', xs: 'row' }}>
+          <Box pos="relative" h={{ base: '22rem', xs: '10.62rem' }} miw="7.44rem">
             <Image
               src={
                 movie.poster_path && `${process.env.NEXT_PUBLIC_IMG_URL}/w185${movie.poster_path}`
@@ -71,7 +70,7 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
               </Text>
 
               <Text lh={1.2} size="sm" lineClamp={2}>
-                {transformGenres(genres, movie.genre_ids || [])}
+                {genresArr ? genresArr.join(', ') : genresStr}
               </Text>
             </Group>
           </Stack>

@@ -1,12 +1,44 @@
 'use client';
 
-import { Suspense } from 'react';
+import { Suspense, useContext, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Flex, Title } from '@mantine/core';
-import RatedMovies from './components/RatedMovies';
 import LoaderDots from '@/app/components/LoaderDots';
 import { Search } from './components/Search';
+import { EmptyRatedList } from './components/EmptyRatedList';
+import { RatedContext } from '../layout';
+import MovieList from '@/app/components/Movies/MovieList';
+import { useRatedMovies, useGenres } from '@/app/lib/hooks/useMoviesDataHooks';
+import { SearchParam } from '@/app/types/enums';
 
 export default function RatedMoviesPage() {
+  const searchParams = useSearchParams();
+  const searchValue = useMemo(() => searchParams.get(SearchParam.Search) ?? '', [searchParams]);
+
+  const { ratedData } = useContext<RatedContextData>(RatedContext);
+
+  const { data: ratedMovies, isLoading: isRatedMoviesLoading } = useRatedMovies(
+    Object.keys(JSON.parse(ratedData)),
+  );
+
+  const { data: genresData, isLoading: isGenresLoading } = useGenres();
+
+  const filteredMovies: MovieDetails[] = useMemo(() => {
+    if (!ratedMovies?.length) return [];
+    if (!searchValue) return ratedMovies;
+    return ratedMovies.filter(({ title }) =>
+      title.toLowerCase().includes(searchValue.toLowerCase()),
+    );
+  }, [ratedMovies, searchValue]);
+
+  if (isRatedMoviesLoading || isGenresLoading) {
+    return <LoaderDots />;
+  }
+
+  if (!ratedMovies?.length) {
+    return <EmptyRatedList />;
+  }
+
   return (
     <>
       <Flex
@@ -22,7 +54,7 @@ export default function RatedMoviesPage() {
       </Flex>
 
       <Suspense fallback={<LoaderDots />}>
-        <RatedMovies />
+        {genresData && <MovieList movies={filteredMovies} genres={genresData.genres} />}
       </Suspense>
     </>
   );

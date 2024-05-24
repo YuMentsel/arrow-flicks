@@ -1,4 +1,4 @@
-import { ImgInfoState } from '../ImgInfoState';
+import { ImgInfoState } from '@/app/components/ImgInfoState';
 import { UIAlt, UIMessage } from '@/app/types/enums';
 import noMovies from '@/../../public/no-movies.png';
 

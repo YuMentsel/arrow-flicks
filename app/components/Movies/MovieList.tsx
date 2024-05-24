@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import { SimpleGrid } from '@mantine/core';
 import MovieCard from './MovieCard';
-import { EmptyList } from './EmptyList';
+import { EmptyList } from '../../(layout)/movies/components/EmptyList';
 
 interface MovieListProps {
-  movies: Movie[];
+  movies: Movie[] | MovieDetails[];
   genres: Genre[];
 }
 

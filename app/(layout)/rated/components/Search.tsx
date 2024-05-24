@@ -17,7 +17,7 @@ export function Search() {
 
   const form = useForm<SearchForm>({
     mode: 'uncontrolled',
-    initialValues: { search: searchParams.get('search') ?? '' },
+    initialValues: { search: searchParams.get(SearchParam.Search) ?? '' },
   });
 
   return (
@@ -29,6 +29,7 @@ export function Search() {
         })}
       >
         <TextInput
+          {...form.getInputProps('search')}
           placeholder="Search movie title"
           size="md"
           leftSection={
