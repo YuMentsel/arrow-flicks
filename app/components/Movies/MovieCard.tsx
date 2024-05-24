@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useCallback, useState, MouseEvent, useEffect, useContext } from 'react';
+import { memo, useCallback, useState, MouseEvent, useContext } from 'react';
 import Link from 'next/link';
 import NextImage from 'next/image';
 import { useMantineTheme, Card, Flex, Box, Stack, Group, Image, Text } from '@mantine/core';
@@ -9,7 +9,7 @@ import { transformGenres } from '@/app/lib/utils/transformGenresData';
 import MovieInfo from './MovieInfo';
 import { RatingButton } from './RatingButton';
 import { RatingModal } from './RatingModal';
-import { RatedContext } from '@/app/(layout)/layout';
+import { RatedContext } from '@/app/context';
 import poster from '@/../../public/no-poster-sm.png';
 
 interface MovieCardProps {

@@ -2,8 +2,8 @@ import { useContext, useState } from 'react';
 import { Modal, Button, Text, Title, Rating, Divider, Stack, Group } from '@mantine/core';
 import { IconX } from '@tabler/icons-react';
 import { useLocalStorage } from '@mantine/hooks';
+import { RatedContext } from '@/app/context';
 import { LS_RATED_MOVIES_KEY } from '@/app/constants';
-import { RatedContext } from '@/app/(layout)/layout';
 import classes from './styles.module.css';
 
 interface RatingModalProps {

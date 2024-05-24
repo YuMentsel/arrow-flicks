@@ -1,40 +1,21 @@
 'use client';
 
-import React, { createContext, useEffect, useMemo, useState } from 'react';
+import { ReactNode } from 'react';
 import { AppShell, Burger, Group, useMantineTheme, Stack, rem, Flex } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import Logo from '../components/Logo';
 import NavigationLink from '../components/NavigationLink';
 import Container from '../components/ErrorBoundary';
-import { LS_RATED_MOVIES_KEY, NAV_LINKS } from '../constants';
-
-export const RatedContext = createContext<RatedContextData>({
-  ratedData: '{}',
-  setRatedData: () => {},
-});
+import { NAV_LINKS } from '../constants';
 
 export default function AppLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   const theme = useMantineTheme();
   const [opened, { toggle, close }] = useDisclosure();
   const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
-
-  const [ratedDataLS, setRatedDataLS] = useState('{}');
-
-  const setRatedData = (value: string) => {
-    setRatedDataLS(value);
-  };
-
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      setRatedDataLS(localStorage.getItem(LS_RATED_MOVIES_KEY) ?? '{}');
-    }
-  }, []);
-
-  const value = useMemo(() => ({ ratedData: ratedDataLS, setRatedData }), [ratedDataLS]);
 
   return (
     <AppShell
@@ -86,9 +67,7 @@ export default function AppLayout({
       </AppShell.Navbar>
 
       <AppShell.Main bg={theme.colors.gray[0]}>
-        <RatedContext.Provider value={value}>
-          <Container>{children}</Container>
-        </RatedContext.Provider>
+        <Container>{children}</Container>
       </AppShell.Main>
     </AppShell>
   );
