@@ -1,5 +1,5 @@
 import { ReadonlyURLSearchParams } from 'next/navigation';
-import { SearchParams } from '../../types/enums';
+import { SearchParam } from '../../types/enums';
 
 export function createQueryString(
   searchParams: ReadonlyURLSearchParams,
@@ -10,7 +10,7 @@ export function createQueryString(
 
   if (value) {
     params.set(name, value);
-    params.delete(SearchParams.Page);
+    params.delete(SearchParam.Page);
   } else {
     params.delete(name);
   }

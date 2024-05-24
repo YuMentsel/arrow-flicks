@@ -6,7 +6,7 @@ import { transformVotesCount } from '@/app/lib/utils/transformMoviesData';
 import Star from '@/../../public/icons/star.svg';
 
 interface MovieInfoProps {
-  movie: Movie;
+  movie: Movie | MovieDetails;
   children: ReactNode;
 }
 

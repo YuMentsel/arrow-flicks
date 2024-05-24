@@ -2,22 +2,22 @@ import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Group, NumberInput } from '@mantine/core';
 import { createQueryString } from '@/app/lib/utils/createQueryString';
-import { ErrorMessage, Paths, SearchParams } from '@/app/types/enums';
+import { ErrorMessage, Path, SearchParam } from '@/app/types/enums';
 import classes from './styles.module.css';
 
 export default function RatingsFilter() {
   const searchParams = useSearchParams();
   const { push } = useRouter();
 
-  const [minVote, setMinVote] = useState<string>(searchParams.get(SearchParams.MinVote) ?? '');
-  const [maxVote, setMaxVote] = useState<string>(searchParams.get(SearchParams.MaxVote) ?? '');
+  const [minVote, setMinVote] = useState<string>(searchParams.get(SearchParam.MinVote) ?? '');
+  const [maxVote, setMaxVote] = useState<string>(searchParams.get(SearchParam.MaxVote) ?? '');
   const [errorMin, setErrorMin] = useState<string | null>(null);
   const [errorMax, setErrorMax] = useState<string | null>(null);
 
   const setRatingsParam = (value: string, name: string) => {
     if (!(errorMin || errorMax)) {
       const queryString = createQueryString(searchParams, value, name);
-      push(`${Paths.Movies}?${queryString}`);
+      push(`${Path.Movies}?${queryString}`);
     }
   };
 
@@ -51,9 +51,9 @@ export default function RatingsFilter() {
       <NumberInput
         label="Ratings"
         placeholder="From"
-        name={SearchParams.MinVote}
+        name={SearchParam.MinVote}
         defaultValue={minVote}
-        startValue={+minVote + 1}
+        startValue={+minVote}
         min={0}
         max={10}
         classNames={classes}
@@ -67,15 +67,15 @@ export default function RatingsFilter() {
         }}
         onBlur={(event) => {
           const value = event.currentTarget.value;
-          setRatingsParam(value, SearchParams.MinVote);
+          setRatingsParam(value, SearchParam.MinVote);
         }}
       />
       <NumberInput
         label=" "
         placeholder="To"
-        name={SearchParams.MaxVote}
+        name={SearchParam.MaxVote}
         defaultValue={maxVote}
-        startValue={+maxVote + 1}
+        startValue={+maxVote}
         min={0}
         max={10}
         classNames={classes}
@@ -89,7 +89,7 @@ export default function RatingsFilter() {
         }}
         onBlur={(event) => {
           const value = event.currentTarget.value;
-          setRatingsParam(value, SearchParams.MaxVote);
+          setRatingsParam(value, SearchParam.MaxVote);
         }}
       />
     </Group>

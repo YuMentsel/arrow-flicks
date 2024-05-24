@@ -1,13 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Modal, Button, Text, Title, Rating, Divider, Stack, Group } from '@mantine/core';
 import { IconX } from '@tabler/icons-react';
 import { useLocalStorage } from '@mantine/hooks';
+import { RatedContext } from '@/app/context';
 import { LS_RATED_MOVIES_KEY } from '@/app/constants';
 import classes from './styles.module.css';
-
-interface RatedMovie {
-  [key: string]: number;
-}
 
 interface RatingModalProps {
   movie: { id: string; title: string };
@@ -31,9 +28,13 @@ export function RatingModal({
     defaultValue: {},
   });
 
+  const { setRatedData } = useContext<RatedContextData>(RatedContext);
+
   const saveRating = () => {
-    setRatedMovie({ ...ratedMovies, [id]: ratingValue });
+    const newValue = { ...ratedMovies, [id]: ratingValue };
+    setRatedMovie(newValue);
     updateRating(ratingValue);
+    setRatedData(JSON.stringify(newValue));
     closeModal(true);
   };
 
@@ -42,6 +43,7 @@ export function RatingModal({
     if (ratedMovies[id] !== undefined) {
       const { [id]: _, ...newRatedMovies } = ratedMovies;
       setRatedMovie(newRatedMovies);
+      setRatedData(JSON.stringify(newRatedMovies));
     }
     updateRating(null);
     closeModal(true);

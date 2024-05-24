@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import { ReactNode } from 'react';
 import { AppShell, Burger, Group, useMantineTheme, Stack, rem, Flex } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import Logo from '../components/Logo';
@@ -11,7 +11,7 @@ import { NAV_LINKS } from '../constants';
 export default function AppLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   const theme = useMantineTheme();
   const [opened, { toggle, close }] = useDisclosure();

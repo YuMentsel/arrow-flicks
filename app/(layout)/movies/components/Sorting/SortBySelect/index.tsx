@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Select, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { Paths, SearchParams } from '@/app/types/enums';
+import { Path, SearchParam } from '@/app/types/enums';
 import { getKeyByValue } from '@/app/lib/utils/getKeyByValue';
 import { DEFAULT_SORT_VALUE, SORT_OPTIONS } from '@/app/constants';
 import { createQueryString } from '@/app/lib/utils/createQueryString';
@@ -18,14 +18,14 @@ export default function SortBySelect() {
   const setSortParam = useCallback(
     (value: string | null) => {
       const paramKey = value ? getKeyByValue(SORT_OPTIONS, value) : null;
-      const queryString = createQueryString(searchParams, paramKey, SearchParams.SortBy);
-      push(`${Paths.Movies}?${queryString}`);
+      const queryString = createQueryString(searchParams, paramKey, SearchParam.SortBy);
+      push(`${Path.Movies}?${queryString}`);
     },
     [searchParams, push],
   );
 
   const defaultValue = useMemo(() => {
-    const paramKey = searchParams.get(SearchParams.SortBy);
+    const paramKey = searchParams.get(SearchParam.SortBy);
     return paramKey ? SORT_OPTIONS[paramKey] : DEFAULT_SORT_VALUE;
   }, [searchParams]);
 

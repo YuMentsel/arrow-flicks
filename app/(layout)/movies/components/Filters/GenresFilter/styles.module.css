@@ -26,31 +26,19 @@
 
 .input {
   margin-top: 0.25rem;
-  border: 1px solid var(--mantine-color-gray-2);
-  font-family: var(--inter);
-  font-size: var(--mantine-font-size-xs);
 
-  &:hover,
-  &:focus {
-    border: 1px solid var(--mantine-color-purple-5);
+  & + .section svg {
+    margin-right: 0.625rem;
+    transition: 0.3s;
   }
 
-  &[data-expanded='true'] {
-    border: 1px solid var(--mantine-color-purple-5);
+  &[data-expanded='true'] + .section svg {
+    transform: rotate(180deg);
   }
 }
 
 .inputField::placeholder {
   color: var(--mantine-color-gray-4);
-}
-
-.input + .section svg {
-  margin-right: 0.625rem;
-  transition: 0.3s;
-}
-
-.input[data-expanded='true'] + .section svg {
-  transform: rotate(180deg);
 }
 
 .pillsList {

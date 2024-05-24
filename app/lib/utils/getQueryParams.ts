@@ -1,9 +1,9 @@
 import { ReadonlyURLSearchParams } from 'next/navigation';
-import { SearchParams } from '../../types/enums';
+import { SearchParam } from '../../types/enums';
 
 export function getQueryParams(searchParams: ReadonlyURLSearchParams) {
   const params = Object.keys(Object.fromEntries(searchParams.entries())).filter(
-    (key) => key !== SearchParams.Page && key !== SearchParams.SortBy,
+    (key) => key !== SearchParam.Page && key !== SearchParam.SortBy,
   );
   return params;
 }

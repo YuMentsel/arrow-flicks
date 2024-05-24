@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 import { Button, Stack, Text } from '@mantine/core';
-import { Paths } from '../types/enums';
+import { Path } from '../types/enums';
 
 interface InfoProps {
   src: StaticImageData;
@@ -12,13 +12,13 @@ interface InfoProps {
 
 export function ImgInfoState({ src, alt, message, btnText }: Readonly<InfoProps>) {
   return (
-    <Stack p="xl" align="center" gap="sm">
+    <Stack align="center" gap="sm">
       <Image src={src} alt={alt} priority />
       <Text ta="center" fw={600} fz="ld" mt={btnText ? '2rem' : 0}>
         {message}
       </Text>
       {btnText && (
-        <Button component={Link} href={`/${Paths.Movies}`}>
+        <Button component={Link} href={`/${Path.Movies}`}>
           {btnText}
         </Button>
       )}

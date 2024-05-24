@@ -1,9 +1,10 @@
 import '@mantine/core/styles.css';
 import React from 'react';
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-import { theme } from '../theme';
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
+import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import { theme } from '../theme';
+import { RatedContextProvider } from './context';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -29,7 +30,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
       </head>
       <body className={inter.className}>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          <RatedContextProvider>{children}</RatedContextProvider>
+        </MantineProvider>
       </body>
     </html>
   );
