@@ -4,9 +4,3 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-[[redirects]]
-  from = "/"
-  to = "https://arrow-flicks-yumentsel.vercel.app/"
-  status = 200
-  force = true

@@ -45,7 +45,7 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
     <>
       <Card w="100%" radius="lg" p="xl" component={Link} href={`/movies/${movie.id}`}>
         <Flex gap="1rem" mih="10.62rem" direction={{ base: 'column', xs: 'row' }}>
-          <Box pos="relative" h={{ base: '22rem', xs: '10.62rem' }} miw="7.44rem">
+          <Box pos="relative" h='10.62rem' miw="7.44rem">
             <Image
               src={
                 movie.poster_path && `${process.env.NEXT_PUBLIC_IMG_URL}/w185${movie.poster_path}`

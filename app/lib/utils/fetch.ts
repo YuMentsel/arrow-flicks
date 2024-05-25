@@ -1,4 +1,4 @@
-import { Endpoint, ErrorMessage } from '../../types/enums';
+import { ErrorMessage } from '../../types/enums';
 
 export const fetcher = async (url: string | URL | Request) => {
   const response = await fetch(url, {
@@ -12,9 +12,4 @@ export const fetcher = async (url: string | URL | Request) => {
 
   const data = await response.json();
   return data;
-};
-
-export const fetchMoviesData = async (url: string | URL | Request): Promise<MainPageResponse> => {
-  const [moviesData, genres] = await Promise.all([fetcher(url), fetcher(Endpoint.Genres)]);
-  return { moviesData, ...genres };
 };

@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useEffect, useMemo, useState } from 'react';
+import { ReactNode, createContext, useEffect, useMemo, useState } from 'react';
 import { LS_RATED_MOVIES_KEY } from '../constants';
 
 export const RatedContext = createContext<RatedContextData>({
@@ -8,7 +8,7 @@ export const RatedContext = createContext<RatedContextData>({
   setRatedData: () => {},
 });
 
-export function RatedContextProvider({ children }: { children: React.ReactNode }) {
+export function RatedContextProvider({ children }: Readonly<{ children: ReactNode }>) {
   const [ratedDataLS, setRatedDataLS] = useState('{}');
 
   const setRatedData = (value: string) => {
@@ -16,7 +16,7 @@ export function RatedContextProvider({ children }: { children: React.ReactNode }
   };
 
   useEffect(() => {
-    if (typeof window !== undefined) {
+    if (window !== undefined) {
       setRatedDataLS(localStorage.getItem(LS_RATED_MOVIES_KEY) ?? '{}');
     }
   }, []);

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Breadcrumbs, Stack } from '@mantine/core';
 import LoaderDots from '@/app/components/LoaderDots';
 import MovieDetails from './components/MovieDetails';
+import Trailer from './components/Trailer';
 import { useMovie } from '@/app/lib/hooks/useMoviesDataHooks';
 import { Path } from '@/app/types/enums';
 import classes from './styles.module.css';
@@ -24,10 +25,10 @@ export default function MoviePage({ params: { id } }: Readonly<MoviePageProps>) 
       <Stack w="100%" maw="50rem" mx="auto">
         <Breadcrumbs classNames={classes} td="none" h="1.88rem" mt="xs">
           <Link href="/">Movies</Link>
-          <Link href={`/${Path.Movies}/${data.id}`}>{data.title}</Link>
+          <Link href={`/${Path.Movies}/${data.id}`}>{data.original_title}</Link>
         </Breadcrumbs>
         <MovieDetails movie={data} />
-        {/* <Trailer movie={data} /> */}
+        <Trailer movie={data} />
       </Stack>
     )
   );
