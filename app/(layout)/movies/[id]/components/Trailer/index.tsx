@@ -16,8 +16,9 @@ export default function Trailer({ movie }: Readonly<TrailerProps>) {
             <Title order={3} fz="md">
               Trailer
             </Title>
-            <AspectRatio className={classes.video} ratio={16 / 9} maw="31.25rem">
+            <AspectRatio className={classes.video} ratio={16 / 9} maw="31rem">
               <iframe
+                className={classes.frame}
                 title={`YouTube video: ${movie.original_title}`}
                 src={`https://www.youtube.com/embed/${movie.videos.results[0].key}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
