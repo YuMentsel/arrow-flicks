@@ -1,10 +1,10 @@
+import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { useCallback, useState } from 'react';
 import { Pagination, useMantineTheme } from '@mantine/core';
+import { createQueryString } from '@/app/lib/utils/createQueryString';
 import { SearchParam } from '@/app/types/enums';
 import { MAX_PAGES } from '@/app/constants';
 import classes from './styles.module.css';
-import { createQueryString } from '@/app/lib/utils/createQueryString';
 
 interface MoviesPaginationProps {
   total: number;
@@ -17,10 +17,15 @@ export default function MoviesPagination({ total }: Readonly<MoviesPaginationPro
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const [activePage, setActivePage] = useState(searchParams.get(SearchParam.Page) ?? 1);
+  const [activePage, setActivePage] = useState(1);
+
+  useEffect(() => {
+    const pageParam = searchParams.get(SearchParam.Page);
+    setActivePage(pageParam ? +pageParam : 1);
+  }, [searchParams]);
 
   const setPageParam = useCallback(
-    (value: string | number, name: string) => {
+    (value: number, name: string) => {
       const queryString = createQueryString(searchParams, value.toString(), name);
       push(`${pathname}?${queryString}`);
       setActivePage(value);
