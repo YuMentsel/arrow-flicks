@@ -10,7 +10,10 @@ export function createQueryString(
 
   if (value) {
     params.set(name, value);
-    params.delete(SearchParam.Page);
+
+    if (name !== SearchParam.Page || value === '1') {
+      params.delete(SearchParam.Page);
+    }
   } else {
     params.delete(name);
   }

@@ -21,3 +21,5 @@ export const SORT_OPTIONS: SortByOptions = {
 export const LS_RATED_MOVIES_KEY = 'ratedMovies';
 
 export const DEFAULT_SORT_VALUE = 'Most Popular';
+
+export const MAX_PAGES = 500;

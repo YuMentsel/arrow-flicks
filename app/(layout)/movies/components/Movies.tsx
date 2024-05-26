@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Stack } from '@mantine/core';
 import MovieList from '@/app/components/Movies/MovieList';
+import MoviesPagination from '@/app/components/Movies/MoviesPagination';
 import LoaderDots from '@/app/components/LoaderDots';
 import { useGenres, useMovies } from '@/app/lib/hooks/useMoviesDataHooks';
-import { useEffect } from 'react';
 
 export default function Movies() {
   const router = useRouter();
@@ -23,6 +25,12 @@ export default function Movies() {
   }
 
   return (
-    moviesData && genresData && <MovieList movies={moviesData.results} genres={genresData.genres} />
+    moviesData &&
+    genresData && (
+      <Stack align="flex-end" gap="xl" mb="3.5rem">
+        <MovieList movies={moviesData.results} genres={genresData.genres} />
+        {moviesData.results.length > 0 && <MoviesPagination total={moviesData.total_pages} />}
+      </Stack>
+    )
   );
 }

@@ -12,7 +12,7 @@ interface InfoProps {
 
 export function ImgInfoState({ src, alt, message, btnText }: Readonly<InfoProps>) {
   return (
-    <Stack align="center" gap="sm">
+    <Stack align="center" gap="sm" w='100%'>
       <Image src={src} alt={alt} priority />
       <Text ta="center" fw={600} fz="ld" mt={btnText ? '2rem' : 0}>
         {message}

@@ -9,10 +9,10 @@ interface CompaniesProps {
 export function Companies({ companies }: Readonly<CompaniesProps>) {
   return (
     <>
-      <Title order={3} fz="md">
+      <Title order={3} fz="md" mt='0.2rem'>
         Production
       </Title>
-      <Stack gap="xs">
+      <Stack gap="sm">
         {companies.map(({ id: companyId, name, logo_path }) => (
           <Flex key={companyId} align="center" gap="0.5rem">
             <Flex w="2.5rem" h="2.5rem" className={classes.img}>

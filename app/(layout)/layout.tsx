@@ -5,7 +5,7 @@ import { AppShell, Burger, Group, useMantineTheme, Stack, rem, Flex } from '@man
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import Logo from '../components/Logo';
 import NavigationLink from '../components/NavigationLink';
-import Container from '../components/ErrorBoundary';
+import ErrorBoundary from '../components/ErrorBoundary';
 import { NAV_LINKS } from '../constants';
 
 export default function AppLayout({
@@ -67,7 +67,7 @@ export default function AppLayout({
       </AppShell.Navbar>
 
       <AppShell.Main bg={theme.colors.gray[0]}>
-        <Container>{children}</Container>
+        <ErrorBoundary>{children}</ErrorBoundary>
       </AppShell.Main>
     </AppShell>
   );
