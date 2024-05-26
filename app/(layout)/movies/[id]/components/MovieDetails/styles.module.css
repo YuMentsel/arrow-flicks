@@ -1,11 +1,11 @@
 .td {
   padding-top: 0.46rem;
   padding-bottom: 0.46rem;
-  font-size: var(--mantine-font-size-sm);
   font-weight: 400;
 
   &:first-child {
     color: var(--mantine-color-gray-4);
-    width: 9.3rem;
+    width: 9rem;
+    padding-right: 0.5rem;
   }
 }

@@ -83,7 +83,7 @@ export default function RatedMovies() {
 
       {genresData && (
         <Stack align="center" gap="xl" mb="3.5rem">
-          <Box mih="28.25rem" w="100%">
+          <Box mih={{ base: 'auto', lg: '28.25rem' }} w="100%">
             <MovieList movies={paginatedMovies} genres={genresData.genres} />
           </Box>
           {filteredMovies.length > MOVIES_ON_PAGE && (

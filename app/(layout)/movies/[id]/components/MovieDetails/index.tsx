@@ -38,7 +38,7 @@ export default function MovieDetails({ movie }: Readonly<MovieDetailsProps>) {
     <>
       <Card w="100%" radius="lg" p="1.5rem" component={Link} href={`/movies/${movie.id}`}>
         <Flex gap="1rem" mih="22rem" direction={{ base: 'column', xs: 'row' }}>
-          <Box pos="relative" h='22rem' miw="15.6rem">
+          <Box pos="relative" h="22rem" miw="15.6rem">
             <Image
               src={
                 movie.poster_path && `${process.env.NEXT_PUBLIC_IMG_URL}/w185${movie.poster_path}`
@@ -57,13 +57,15 @@ export default function MovieDetails({ movie }: Readonly<MovieDetailsProps>) {
             <MovieInfo movie={movie}>
               <RatingButton onClick={openRatingModal} rating={rating} />
             </MovieInfo>
-            <Table lh={1.1}
+            <Table
+              lh={1.1}
               data={transformDetailedData(movie)}
               classNames={classes}
               withRowBorders={false}
               horizontalSpacing={0}
               verticalSpacing={6}
               mb="-0.5rem"
+              fz={{ base: 'xs', md: 'sm' }}
             />
           </Stack>
         </Flex>

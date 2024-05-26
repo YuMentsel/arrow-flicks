@@ -47,7 +47,13 @@ export default function RatingsFilter() {
   };
 
   return (
-    <Group display="inline-flex" align="flex-start" gap="0.5rem" wrap="nowrap">
+    <Group
+      display={{ base: 'flex', sm: 'inline-flex' }}
+      align="flex-start"
+      gap="0.5rem"
+      wrap="nowrap"
+      grow
+    >
       <NumberInput
         label="Ratings"
         placeholder="From"

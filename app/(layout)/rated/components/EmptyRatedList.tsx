@@ -5,7 +5,7 @@ import { ImgInfoState } from '@/app/components/ImgInfoState';
 
 export function EmptyRatedList() {
   return (
-    <Box className="center">
+    <Box className="center" mt='1.3rem'>
       <ImgInfoState
         src={NoRatedMovies}
         alt={UIAlt.NoRatedMovies}

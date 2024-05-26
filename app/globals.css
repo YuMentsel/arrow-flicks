@@ -54,6 +54,7 @@ body {
   &[data-variant='transparent'] {
     padding: 0;
     font-weight: 500;
+    color: var(--mantine-color-purple-5);
     background-color: transparent;
 
     &:hover {

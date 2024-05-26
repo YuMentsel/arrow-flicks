@@ -43,7 +43,7 @@ export default function Trailer({
               <Title order={3} fz="md">
                 Description
               </Title>
-              <Text fz="sm" lh="1.4">
+              <Text fz={{ base: 'xs', md: 'sm' }} lh="1.4">
                 {overview}
               </Text>
             </Stack>

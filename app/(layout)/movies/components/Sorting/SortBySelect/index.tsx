@@ -50,6 +50,7 @@ export default function SortBySelect() {
         offsetScrollbars: false,
         type: 'auto',
       }}
+      maw={{ base: '100%', sm: 'calc(50% - 0.5rem)', lg: '17.75rem' }}
     />
   );
 }
