@@ -22,8 +22,8 @@ export default function MoviePage({ params: { id } }: Readonly<MoviePageProps>) 
 
   return (
     data && (
-      <Stack w="100%" maw="50rem" mx="auto">
-        <Breadcrumbs classNames={classes} td="none" h="1.88rem" mt="xs">
+      <Stack w="100%" maw="50rem" mih='95rem' mx="auto" gap='lg'>
+        <Breadcrumbs classNames={classes} td="none" mt="md">
           <Link href="/">Movies</Link>
           <Link href={`/${Path.Movies}/${data.id}`}>{data.original_title}</Link>
         </Breadcrumbs>
