@@ -34,7 +34,7 @@ export default function Movies() {
     genresData && (
       <Stack align="flex-end" gap="xl" mb="3.5rem">
         <MovieList movies={moviesData.results} genres={genresData.genres} />
-        {moviesData.results.length > 0 && <MoviesPagination total={moviesData.total_pages} />}
+        {moviesData.total_pages > 1 && <MoviesPagination total={moviesData.total_pages} />}
       </Stack>
     )
   );

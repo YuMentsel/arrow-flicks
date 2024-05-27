@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useCallback, useState, MouseEvent, useContext } from 'react';
+import { memo, useCallback, useState, MouseEvent, useContext, useMemo } from 'react';
 import Link from 'next/link';
 import NextImage from 'next/image';
 import { useMantineTheme, Card, Flex, Box, Stack, Group, Image, Text } from '@mantine/core';
@@ -25,7 +25,11 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
 
   const { ratedData } = useContext<RatedContextData>(RatedContext);
 
-  const [rating, setRating] = useState<number | null>(+JSON.parse(ratedData)[movie.id] || null);
+  const parsedMovieData = useMemo(() => JSON.parse(ratedData)[movie.id], [ratedData, movie.id]);
+
+  const [rating, setRating] = useState<number | null>(
+    parsedMovieData !== undefined ? +parsedMovieData : null,
+  );
   const [opened, { open, close }] = useDisclosure(false);
 
   const openRatingModal = useCallback(
@@ -45,7 +49,7 @@ export const MovieCard = memo(({ movie, genres }: MovieCardProps) => {
     <>
       <Card w="100%" radius="lg" p="xl" component={Link} href={`/movies/${movie.id}`}>
         <Flex gap="1rem" mih="10.62rem" direction={{ base: 'column', xs: 'row' }}>
-          <Box pos="relative" h='10.62rem' miw="7.44rem">
+          <Box pos="relative" h="10.62rem" miw="7.44rem">
             <Image
               src={
                 movie.poster_path && `${process.env.NEXT_PUBLIC_IMG_URL}/w185${movie.poster_path}`

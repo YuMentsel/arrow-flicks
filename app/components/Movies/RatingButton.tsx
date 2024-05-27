@@ -12,7 +12,7 @@ export function RatingButton({ onClick, rating }: Readonly<RatingProps>) {
 
   return (
     <ActionIcon variant="transparent" miw="fit-content" onClick={onClick}>
-      <Star color={rating ? theme.colors.purple[5] : theme.colors.gray[2]} />
+      <Star color={rating !== null ? theme.colors.purple[5] : theme.colors.gray[2]} />
       {rating !== null && (
         <Text size="sm" fw={600} c="black" mx="0.2rem">
           {rating}
