@@ -28,7 +28,7 @@ export default function YearFilter() {
     <Select
       label="Release year"
       placeholder="Select release year"
-      data={generateYearsArr(1895, new Date().getFullYear() + 7)}
+      data={generateYearsArr(1874, new Date().getFullYear() + 7)}
       onChange={setYearParam}
       onDropdownOpen={open}
       onDropdownClose={close}

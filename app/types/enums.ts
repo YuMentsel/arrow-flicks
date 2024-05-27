@@ -1,7 +1,7 @@
 export enum Path {
   Movies = 'movies',
   Rated = 'rated',
-  NotFound = 'not-found',
+  NotFound = 'notfound',
 }
 
 export enum SearchParam {

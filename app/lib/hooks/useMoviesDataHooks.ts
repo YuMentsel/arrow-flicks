@@ -1,9 +1,17 @@
+import { ReadonlyURLSearchParams } from 'next/navigation';
 import useSWR from 'swr';
 import { fetcher } from '../utils/fetch';
 import { Endpoint } from '@/app/types/enums';
+import { validateSearchParams } from '../utils/validateSearchParams';
 
-export const useMovies = (params: string) =>
-  useSWR<MovieResponse>(`${Endpoint.MoviesData}?${params}`, fetcher);
+export const useMovies = (params: ReadonlyURLSearchParams) => {
+  const isValidParams = validateSearchParams(params);
+  const { data, isLoading } = useSWR<MovieResponse>(
+    `${Endpoint.MoviesData}?${params.toString()}`,
+    fetcher,
+  );
+  return { data, isLoading, isValidParams };
+};
 
 export const useMovie = (id: number) => useSWR(`${Endpoint.Movie}${id}`, fetcher);
 

@@ -18,6 +18,17 @@ export const SORT_OPTIONS: SortByOptions = {
   'original_title.desc': 'Title (Z-A)',
 };
 
+export const VALID_SORT_KEYS = Object.keys(SORT_OPTIONS);
+
+export const VALID_PARAM_KEYS = new Set([
+  'with_genres',
+  'primary_release_year',
+  'vote_average.gte',
+  'vote_average.lte',
+  'sort_by',
+  'page',
+]);
+
 export const LS_RATED_MOVIES_KEY = 'ratedMovies';
 
 export const DEFAULT_SORT_VALUE = 'Most Popular';

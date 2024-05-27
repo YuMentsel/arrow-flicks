@@ -5,20 +5,25 @@ import MovieList from '@/app/components/Movies/MovieList';
 import MoviesPagination from '@/app/components/Movies/MoviesPagination';
 import LoaderDots from '@/app/components/LoaderDots';
 import { useGenres, useMovies } from '@/app/lib/hooks/useMoviesDataHooks';
+import { Path } from '@/app/types/enums';
 
 export default function Movies() {
-  const router = useRouter();
+  const { replace } = useRouter();
 
   useEffect(() => {
     if (window?.location.hostname === 'arrow-flicks-yumentsel.netlify.app') {
-      router.replace('https://arrow-flicks-yumentsel.vercel.app');
+      replace('https://arrow-flicks-yumentsel.vercel.app');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const searchParams = useSearchParams();
-  const { data: moviesData, isLoading: isMoviesLoading } = useMovies(searchParams.toString());
+  const { data: moviesData, isLoading: isMoviesLoading, isValidParams } = useMovies(searchParams);
   const { data: genresData, isLoading: isGenresLoading } = useGenres();
+
+  if (!isValidParams) {
+    replace(`/${Path.NotFound}`);
+  }
 
   if (isMoviesLoading || isGenresLoading) {
     return <LoaderDots />;
