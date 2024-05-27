@@ -1,4 +1,4 @@
-import { Stack } from '@mantine/core';
+import { Box } from '@mantine/core';
 import { ImgInfoState } from './ImgInfoState';
 import { UIAlt } from '../types/enums';
 import noMovies from '@/../../public/no-movies.png';
@@ -9,8 +9,8 @@ export default function ErrorFallback({
   errorMessage: string;
 }>) {
   return (
-    <Stack className="center" p="xl" align="center" gap="sm">
+    <Box className="center" ml={{ sm: '7.5rem', lg: '8.75rem' }}>
       <ImgInfoState src={noMovies} alt={UIAlt.Error} message={errorMessage} />
-    </Stack>
+    </Box>
   );
 }

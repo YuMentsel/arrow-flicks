@@ -1,27 +1,34 @@
 'use client';
 
 import { ReactNode, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { SWRConfig } from 'swr';
 import { Container } from '@mantine/core';
 import ErrorFallback from './ErrorFallback';
+import { ErrorMessage, Path } from '../types/enums';
 
 export default function ErrorBoundary({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const { push } = useRouter();
 
   return (
     <SWRConfig
       value={{
         onError: (error) => {
-          setError(`Error! ${error.message}`);
+          if (error.message === ErrorMessage.NotFound) {
+            push(`/${Path.NotFound}`);
+          } else {
+            setErrorMessage(`Error! ${error.message}`);
+          }
         },
       }}
     >
-      {error ? (
-        <ErrorFallback errorMessage={error} />
+      {errorMessage ? (
+        <ErrorFallback errorMessage={errorMessage} />
       ) : (
         <Container
           style={{

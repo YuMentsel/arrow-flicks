@@ -1,6 +1,7 @@
 export enum Path {
   Movies = 'movies',
   Rated = 'rated',
+  NotFound = 'not-found',
 }
 
 export enum SearchParam {
@@ -17,6 +18,7 @@ export enum ErrorMessage {
   RatingMin = `Should be ≤ "To"`,
   RatingMax = `Should be ≥ "From"`,
   Fetch = 'Failed to fetch data :(',
+  NotFound = '404 Not Found',
 }
 
 export enum UIMessage {

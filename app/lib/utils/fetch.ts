@@ -7,7 +7,11 @@ export const fetcher = async (url: string | URL | Request) => {
   });
 
   if (!response.ok) {
-    throw new Error(ErrorMessage.Fetch);
+    if (response.status === 404) {
+      throw new Error(ErrorMessage.NotFound);
+    } else {
+      throw new Error(ErrorMessage.Fetch);
+    }
   }
 
   const data = await response.json();
