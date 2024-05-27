@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Group, NumberInput } from '@mantine/core';
+import { useDebouncedCallback } from '@mantine/hooks';
 import { createQueryString } from '@/app/lib/utils/createQueryString';
 import { ErrorMessage, Path, SearchParam } from '@/app/types/enums';
 import classes from './styles.module.css';
@@ -14,33 +15,37 @@ export default function RatingsFilter() {
   const [errorMin, setErrorMin] = useState<string | null>(null);
   const [errorMax, setErrorMax] = useState<string | null>(null);
 
-  const setRatingsParam = (value: string, name: string) => {
+  useEffect(() => {
+    revalidateInputs(minVote, maxVote);
+  }, [minVote, maxVote]);
+
+  const setRatingsParam = useDebouncedCallback((value: string, name: string) => {
     if (!(errorMin || errorMax)) {
       const queryString = createQueryString(searchParams, value, name);
       push(`${Path.Movies}?${queryString}`);
     }
-  };
+  }, 800);
 
   const validateMin = (value: string) => {
-    if (value !== '' && maxVote !== '' && value > maxVote) {
+    setMinVote(() => value);
+    if (value !== '' && maxVote !== '' && +value > +maxVote) {
       setErrorMin(ErrorMessage.RatingMin);
     } else {
       setErrorMin(null);
     }
-    validateInputs(value, maxVote);
   };
 
   const validateMax = (value: string) => {
-    if (value !== '' && minVote !== '' && value < minVote) {
+    setMaxVote(() => value);
+    if (value !== '' && minVote !== '' && +value < +minVote) {
       setErrorMax(ErrorMessage.RatingMax);
     } else {
       setErrorMax(null);
     }
-    validateInputs(minVote, value);
   };
 
-  const validateInputs = (min: string, max: string) => {
-    if (max === '' || min === '' || max >= min) {
+  const revalidateInputs = (min: string, max: string) => {
+    if (max === '' || min === '' || +max >= +min) {
       setErrorMax(null);
       setErrorMin(null);
     }
@@ -68,12 +73,8 @@ export default function RatingsFilter() {
         allowNegative={false}
         error={errorMin}
         onChange={(value) => {
-          setMinVote(value.toString());
           validateMin(value.toString());
-        }}
-        onBlur={(event) => {
-          const value = event.currentTarget.value;
-          setRatingsParam(value, SearchParam.MinVote);
+          setRatingsParam(value.toString(), SearchParam.MinVote);
         }}
       />
       <NumberInput
@@ -90,12 +91,8 @@ export default function RatingsFilter() {
         allowNegative={false}
         error={errorMax}
         onChange={(value) => {
-          setMaxVote(value.toString());
           validateMax(value.toString());
-        }}
-        onBlur={(event) => {
-          const value = event.currentTarget.value;
-          setRatingsParam(value, SearchParam.MaxVote);
+          setRatingsParam(value.toString(), SearchParam.MaxVote);
         }}
       />
     </Group>
