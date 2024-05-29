@@ -9,7 +9,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'ArrowFlicks',
-  description: 'An application designed to search and evaluate movies.',
+  description: 'The application is designed for searching and rating movies.',
 };
 
 const inter = Inter({
