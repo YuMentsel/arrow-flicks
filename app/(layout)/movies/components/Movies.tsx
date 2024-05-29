@@ -11,10 +11,9 @@ export default function Movies() {
   const { replace } = useRouter();
 
   useEffect(() => {
-    if (window?.location.hostname === 'arrow-flicks-yumentsel.netlify.app') {
-      replace('https://arrow-flicks-yumentsel.vercel.app');
+    if (window.location.hostname === 'arrow-flicks-yumentsel.netlify.app') {
+      window.location.replace('https://arrow-flicks-yumentsel.vercel.app');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const searchParams = useSearchParams();
