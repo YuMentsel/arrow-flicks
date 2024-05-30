@@ -1,14 +1,24 @@
-import "@mantine/core/styles.css";
-import React from "react";
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
-import { theme } from "../theme";
+import '@mantine/core/styles.css';
+import React from 'react';
+import { Inter } from 'next/font/google';
+import { Metadata } from 'next';
+import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import { theme } from '../theme';
+import { RatedContextProvider } from './context';
+import './globals.css';
 
-export const metadata = {
-  title: "Mantine Next.js template",
-  description: "I am using Mantine with Next.js!",
+export const metadata: Metadata = {
+  title: 'ArrowFlicks',
+  description: 'The application is designed for searching and rating movies.',
 };
 
-export default function RootLayout({ children }: { children: any }) {
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--inter',
+});
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
@@ -19,8 +29,10 @@ export default function RootLayout({ children }: { children: any }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
-      <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+      <body className={inter.className}>
+        <MantineProvider theme={theme}>
+          <RatedContextProvider>{children}</RatedContextProvider>
+        </MantineProvider>
       </body>
     </html>
   );

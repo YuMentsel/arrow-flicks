@@ -1,0 +1,21 @@
+.dots {
+  display: none;
+}
+
+.control {
+  font-size: var(--mantine-font-size-sm);
+  border: 1px solid var(--mantine-color-gray-2);
+
+  &:hover {
+    background-color: white;
+    border: 1px solid var(--mantine-color-purple-3);
+  }
+
+  &[data-active] {
+    border: none;
+
+    &:hover {
+      background-color: var(--mantine-color-purple-5);
+    }
+  }
+}

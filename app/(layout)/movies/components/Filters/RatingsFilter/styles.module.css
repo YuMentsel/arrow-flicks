@@ -1,0 +1,37 @@
+.label {
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 700;
+}
+
+.input {
+  height: 2.62rem;
+  margin-top: 0.25rem;
+}
+
+.controls {
+  height: 26px;
+  margin-right: 0.5rem;
+}
+
+.control {
+  color: var(--mantine-color-gray-4);
+  border: none;
+  cursor: pointer;
+
+  svg:hover,
+  svg:focus {
+    color: var(--mantine-color-purple-3);
+  }
+
+  svg:active {
+    color: var(--mantine-color-purple-5);
+  }
+}
+
+.control:hover {
+  background: transparent;
+}
+
+.invalid {
+  background-color: var(--mantine-color-purple-5);
+}

@@ -1,0 +1,15 @@
+.img {
+  border-radius: 50%;
+  border: 1px solid var(--mantine-color-gray-1);
+  overflow: hidden;
+}
+
+.video {
+  border-radius: 0.56rem;
+  overflow: hidden;
+}
+
+.frame {
+  border: 3px solid var(--mantine-color-gray-1);
+  border-radius: 0.8rem;
+}

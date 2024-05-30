@@ -1,0 +1,81 @@
+.label {
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 700;
+}
+
+.option {
+  height: 2.25rem;
+  margin-right: 0.1rem;
+  padding-left: 0.5rem;
+  font-size: var(--mantine-font-size-xs);
+  transition: 0.3s;
+
+  &:hover {
+    background-color: var(--mantine-color-purple-0);
+  }
+
+  &[aria-selected='true'] {
+    background-color: var(--mantine-color-purple-5);
+    color: var(--mantine-color-white);
+  }
+}
+
+.dropdown {
+  border: none;
+}
+
+.input {
+  margin-top: 0.25rem;
+
+  & + .section svg {
+    margin-right: 0.625rem;
+    transition: 0.3s;
+  }
+
+  &[data-expanded='true'] + .section svg {
+    transform: rotate(180deg);
+  }
+}
+
+.inputField::placeholder {
+  color: var(--mantine-color-gray-4);
+}
+
+.pillsList {
+  min-height: 1.8rem;
+  gap: 0.25rem;
+}
+
+.pill {
+  position: relative;
+  padding: 0 0.25rem 0 0;
+  background-color: transparent;
+  font-size: var(--mantine-font-size-xs);
+  line-height: 143%;
+
+  button {
+    display: none;
+  }
+
+  &:nth-child(2)::before,
+  & ~ &::after {
+    content: ',';
+    position: absolute;
+    font-size: var(--mantine-font-size-xs);
+    bottom: 0;
+  }
+
+  &:nth-child(2)::before {
+    left: -0.5rem;
+  }
+
+  & ~ &::after {
+    right: 0;
+  }
+
+  &:nth-last-child(2):after,
+  &:nth-last-child(2) + input,
+  &:last-child::after {
+    display: none;
+  }
+}
